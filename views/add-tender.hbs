@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Dodaj przetarg</title>
+</head>
+<body>
+    {{> menu}}
+    <div class="formDiv">
+    <h1>Dodaj przetarg</h1>
+        <form action="/dodaj-przetarg" method="post" class="addForm">
+            <label for="title">Nazwa przedmiotu przetargu:</label>
+            <input type="text" id="title" name="title" required>
+            
+            <label for="institution">Instytucja zamawiająca:</label>
+            <input type="text" id="institution" name="institution" required>
+            
+            <label for="description">Opis przedmiotu przetargu:</label>
+            <textarea id="description" name="description" required></textarea>
+            
+            <label for="startDate">Data i godzina rozpoczęcia przetargu:</label>
+            <input type="datetime-local" id="startDate" name="startDate" required>
+            
+            <label for="endDate">Data i godzina zakończenia przetargu:</label>
+            <input type="datetime-local" id="endDate" name="endDate" required>
+            
+            <label for="budget">Maksymalna wartość zamówienia:</label>
+            <input type="number" id="budget" name="budget" required>
+            
+            <input type="submit" value="Dodaj przetarg">
+        </form>
+    </div>
+    
+</body>
+</html>

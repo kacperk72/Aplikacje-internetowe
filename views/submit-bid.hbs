@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+</head>
+<body>
+    <div class="menu">
+        {{> menu}}
+    </div>
+    <div>
+        <h1>Złóż ofertę w przetargu: {{tender.title}}</h1>
+        <form action="/przetargi/{{tender.id}}/zloz-oferte" method="POST">
+        <label for="bidderName">Nazwa składającego ofertę:</label>
+        <input type="text" name="bidderName" id="bidderName" required>
+
+        <label for="bidValue">Wartość oferty:</label>
+        <input type="number" step="1" name="bidValue" id="bidValue" required>
+
+        <input type="submit" value="Złóż ofertę">
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+</head>
+<body>
+    <div class="menu">
+        {{> menu}}
+    </div>
+    <div>
+        <h1>{{tender.title}}</h1>
+        <p><strong>Data i godzina rozpoczęcia zbierania ofert:</strong> {{formatDate tender.startDate 'DD.MM.YYYY HH:mm'}}</p>
+        <p><strong>Data i godzina zakończenia przyjmowania ofert:</strong> {{formatDate tender.endDate 'DD.MM.YYYY HH:mm'}}</p>
+        <p><strong>Opis przetargu:</strong> {{tender.description}}</p>
+        <p><strong>Nazwa instytucji zamawiającej:</strong> {{tender.institution}}</p>
+
+        <a href="/przetargi/{{tender.id}}/zloz-oferte" class="submit-bid-btn">Złóż ofertę</a>
+    </div>
+
+</body>
+</html>

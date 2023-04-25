@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+</head>
+<body>
+    <div class="menu">
+        {{> menu}}
+    </div>
+    <div>
+        <h1>{{tender.title}}</h1>
+        <h3>Opis przetargu: {{tender.description}}</h3>
+        <h3>Nazwa instytucji zamawiającej: {{tender.institution}}</h3>
+        <h3>Status: Zakończony</h3>
+        {{#if tender.winningBid}}
+        <h3>Zwycięska oferta: {{tender.winningBid.bidderName}} ({{tender.winningBid.bidValue}})</h3>
+        {{else}}
+        <h3>Przetarg zakończony bez rozstrzygnięcia</h3>
+        {{/if}}
+
+        <h2>Oferty:</h2>
+        <table>
+        <thead>
+            <tr>
+            <th>Lp.</th>
+            <th>Nazwa składającego ofertę</th>
+            <th>Wartość oferty</th>
+            <th>Data i godzina złożenia oferty</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each tender.bids}}
+            <tr>
+            <td>{{@index}}</td>
+            <td>{{this.bidderName}}</td>
+            <td>{{this.bidValue}}</td>
+            <td>{{this.submissionDate}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+        </table>
+    </div>
+</body>
+</html>

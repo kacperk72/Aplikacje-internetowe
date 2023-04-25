@@ -1,0 +1,135 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: #00B7FF;
+}
+
+nav {
+  background-color: #333;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav li {
+  float: left;
+}
+
+nav a {
+  color: white;
+  display: block;
+  padding: 14px 16px;
+  text-align: center;
+  text-decoration: none;
+}
+
+nav a:hover {
+  background-color: #111;
+}
+
+main {
+  padding-top: 50px;
+}
+
+.menu {
+  margin-bottom: 50px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+th,
+td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+tr:nth-child(even) {
+  background-color: #f8f8f8;
+}
+
+.submit-bid-btn {
+  display: inline-block;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+  padding: 12px 24px;
+  border-radius: 5px;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.submit-bid-btn:hover {
+  background-color: #0056b3;
+}
+
+h1 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+label {
+  display: block;
+  font-size: 1rem;
+  margin-top: 1rem;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="datetime-local"],
+textarea {
+  display: block;
+  font-size: 1rem;
+  width: 50%;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  margin-top: 0.25rem;
+}
+
+input[type="submit"] {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+input[type="submit"]:hover {
+  background-color: #0056B3;
+}
+
+.addForm {
+  margin: 0 auto;
+  width: 50%;
+  text-align: center;
+}
+
+.formDiv input, textarea {
+  width: 100% !important;
+  height: 100%;
+}

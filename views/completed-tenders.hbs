@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+</head>
+<body>
+    <div class="menu">
+        {{> menu}}
+    </div>
+    <div>
+        <h1>Lista zakończonych przetargów</h1>
+        <table>
+        <thead>
+            <tr>
+            <th>Liczba porządkowa</th>
+            <th>Nazwa/tytuł przedmiotu przetargu</th>
+            <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each completedTenders}}
+            <tr>
+            <td>{{@index}}</td>
+            <td><a href="/przetargi/skonczone-przetargi/{{this.id}}">{{this.title}}</a></td>
+            <td>Zakończony</td>
+            </tr>
+            {{/each}}
+        </tbody>
+        </table>
+
+    </div>
+
+    {{{body}}}
+</body>
+</html>
