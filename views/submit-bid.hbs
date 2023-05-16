@@ -10,13 +10,13 @@
     <div>
         <h1>Złóż ofertę w przetargu: {{tender.title}}</h1>
         <form action="/przetargi/{{tender.id}}/zloz-oferte" method="POST">
-        <label for="bidderName">Nazwa składającego ofertę:</label>
-        <input type="text" name="bidderName" id="bidderName" required>
+            <label for="bidder_name">Nazwa składającego ofertę:</label>
+            <input type="text" name="bidder_name" id="bidder_name" required>
 
-        <label for="bidValue">Wartość oferty:</label>
-        <input type="number" step="1" name="bidValue" id="bidValue" required>
+            <label for="bid_value">Wartość oferty:</label>
+            <input type="number" step="1" name="bid_value" id="bid_value" required>
 
-        <input type="submit" value="Złóż ofertę">
+            <input type="submit" value="Złóż ofertę">
         </form>
     </div>
 </body>

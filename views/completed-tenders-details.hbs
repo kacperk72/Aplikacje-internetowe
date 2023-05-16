@@ -13,7 +13,7 @@
         <h3>Nazwa instytucji zamawiającej: {{tender.institution}}</h3>
         <h3>Status: Zakończony</h3>
         {{#if tender.winningBid}}
-        <h3>Zwycięska oferta: {{tender.winningBid.bidderName}} ({{tender.winningBid.bidValue}})</h3>
+        <h3>Zwycięska oferta: {{tender.winningBid.bidder_name}} ({{tender.winningBid.bid_value}})</h3>
         {{else}}
         <h3>Przetarg zakończony bez rozstrzygnięcia</h3>
         {{/if}}
@@ -32,9 +32,9 @@
             {{#each tender.bids}}
             <tr>
             <td>{{@index}}</td>
-            <td>{{this.bidderName}}</td>
-            <td>{{this.bidValue}}</td>
-            <td>{{this.submissionDate}}</td>
+            <td>{{this.bidder_name}}</td>
+            <td>{{this.bid_value}}</td>
+            <td>{{formatDate this.bid_datetime 'DD.MM.YYYY HH:mm'}}</td>
             </tr>
             {{/each}}
         </tbody>

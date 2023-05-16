@@ -4,6 +4,10 @@ body {
   padding: 0;
 }
 
+.content {
+  margin: 2%;
+}
+
 a {
   color: #00B7FF;
 }

@@ -69,23 +69,32 @@ const tenders = [
   })
   .get('/lista', async (req, res, next) => {
     // coś nie tak z asynchronicznością + data sie rozsypała
-      const tenders = await DataBase.getAllTenders();
+      let tenders = await DataBase.getAllTenders();
       console.log("tenders", tenders)
+      tenders = tenders.filter(tender => new Date(tender.end_datetime) > new Date());
+
       res.render('tenders-list', { tenders });
   })
   .get('/skonczone-przetargi', async (req, res, next) => {
       const tenders = await DataBase.getAllTenders();
-      const completedTenders = tenders.filter(tender => moment().isAfter(tender.endDate));
+      const completedTenders = tenders.filter(tender => moment().isAfter(tender.end_datetime));
+      
       res.render('completed-tenders', { completedTenders });
   })      
   .get('/skonczone-przetargi/:id', async (req, res, next) => {
       const tenderId = parseInt(req.params.id);
+      console.log("id", tenderId)
       const tender = await DataBase.getTenderById(tenderId);
+      console.log(tender)
     
-      if (tender && moment().isAfter(tender.endDate)) {
+      if (tender) {
         tender.bids = await DataBase.getAllBidsByTenderId(tenderId);
-        tender.bids.sort((a, b) => a.bidValue - b.bidValue);
-        tender.winningBid = tender.bids.find(bid => bid.bidValue <= tender.budget);
+        console.log(tender.bids)
+        if(tender.bids.length >= 2){
+          tender.bids.sort((a, b) => a.bid_value - b.bid_value);
+        }
+        tender.winningBid = tender.bids.find(bid => bid.bid_value <= tender.max_budget);
+        console.log("tender", tender)
         res.render('completed-tenders-details', { tender });
       } else {
           const err = new Error('Nie znaleziono zakończonego przetargu o podanym ID');
@@ -98,11 +107,11 @@ const tenders = [
         title: req.body.title,
         institution: req.body.institution,
         description: req.body.description,
-        startDate: req.body.startDate,
-        endDate: req.body.endDate,
-        budget: req.body.budget
+        start_datetime: req.body.startDate,
+        end_datetime: req.body.endDate,
+        max_budget: req.body.budget
       };
-    
+      console.log("dodaje nowy przetarg")
       await DataBase.addTender(newTender);
       res.redirect('/przetargi');
   })
@@ -127,19 +136,20 @@ const tenders = [
       }
   })
   .post('/:id/zloz-oferte', async (req, res, next) => {
-    const tenderId = parseInt(req.params.id);
-    const tender = await DataBase.getTenderById(tenderId);
+    const tender_id = parseInt(req.params.id);
+    const tender = await DataBase.getTenderById(tender_id);
   
     if (tender) {
       const currentDate = moment();
-      const endDate = moment(tender.endDate);
+      const endDate = moment(tender.end_datetime);
   
       if (currentDate.isBefore(endDate)) {
+        console.log('składam ofertę')
         const newBid = {
-          tenderId,
-          bidderName: req.body.bidderName,
-          bidValue: parseFloat(req.body.bidValue),
-          submissionDate: currentDate.format('YYYY-MM-DD HH:mm:ss')
+          tender_id,
+          bidder_name: req.body.bidder_name,
+          bid_value: parseFloat(req.body.bid_value),
+          bid_datetime: currentDate.format('YYYY-MM-DD HH:mm:ss')
         };
   
         await DataBase.addBid(newBid);

@@ -8,7 +8,31 @@
         {{> menu}}
     </div>
     <div>
-        <h1>Strona główna</h1>
+        <div class="content">
+            <h1>Strona główna</h1>
+            <p><h2>
+                Aplikacja do zarządzania przetargami
+            </h2>Umożliwia użytkownikom tworzenie nowych przetargów, przeglądanie aktywnych przetargów i składanie ofert na dostępne przetargi. Dzięki przejrzystemu interfejsowi użytkownik może łatwo znaleźć interesujące go przetargi i złożyć ofertę.</p>
+
+            <p>Aplikacja składa się z kilku kluczowych elementów:</p>
+            <ul>
+                <li>
+                    Lista aktywnych przetargów: Użytkownicy mogą przeglądać listę bieżących przetargów, zobaczyć szczegóły każdego przetargu i zdecydować, czy chcą złożyć ofertę.
+                </li>
+                <li>
+                    Formularz do składania ofert: Użytkownicy mogą składać oferty na dostępne przetargi, podając swoje dane i wartość oferty.
+                </li>
+                <li>
+                    Lista zakończonych przetargów: Użytkownicy mogą przeglądać listę zakończonych przetargów, zobaczyć, które oferty były najkorzystniejsze i sprawdzić, czy ich oferta była zwycięska.
+                </li>
+                <li>
+                    Formularz do dodawania nowych przetargów: Administratorzy systemu mogą dodawać nowe przetargi, podając wszystkie niezbędne informacje, takie jak nazwa przetargu, instytucja zamawiająca, opis przetargu, daty rozpoczęcia i zakończenia oraz budżet przetargu.
+                </li>
+            </ul>
+            <p>
+                Aplikacja korzysta z bazy danych MySQL do przechowywania danych o przetargach i ofertach. Wszystkie operacje na danych są realizowane za pomocą zapytań SQL, które są wywoływane przez specjalne metody w module bazy danych aplikacji.
+            </p>
+        </div>
     </div>
     {{{body}}}
 </body>
